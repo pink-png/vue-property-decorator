@@ -2,9 +2,9 @@
   <div class="hello">
     {{ msg }}
     <div class="btnaddreduce">
-      <button @click="btnx('add')">+</button>
+      <button @click="addToCount">+</button>
       <span>{{ coust }}</span>
-      <button @click="btnx('reduce')">-</button>
+      <button @click="resetCount">-</button>
     </div>
   </div>
 </template>
@@ -13,28 +13,20 @@
 import { Component, Prop, Vue, Emit } from "vue-property-decorator";
 
 @Component
-export default class HelloWorld extends Vue {
+export default class Bcomponents extends Vue {
   @Prop() private msg!: string;
-
-  @Emit("addToCount")
-  addToCount() {
-    this.coust++;
-  }
-
-  @Emit("resetCount")
-  resetCount() {
-    this.coust--;
-  }
 
   private coust = 0;
 
-  private btnx(type:string){
-    if (type == "add") {
-      this.coust++;
-    } else {
-      this.coust--;
-    }
-  };
+  @Emit("addTo")
+  addToCount() {
+    return 1;
+  }
+
+  @Emit("resetTo")
+  resetCount() {
+    return -1;
+  }
 }
 </script>
 
